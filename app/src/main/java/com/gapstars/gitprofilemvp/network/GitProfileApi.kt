@@ -13,11 +13,6 @@ import retrofit2.http.*
  * The interface which provides methods to get result of webservices
  */
 interface GitProfileApi {
-    /**
-     * Get the list of the pots from the API
-     */
-    @GET("/posts")
-    fun getPosts(): Observable<List<RepositoryModel>>
 
     /**
      * query github profile data
