@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Git Profile</string>
+    <string name="unknown_error">An unknown error occurred.</string>
+    <string name="app_title">GitHub Profile Repos</string>
+    <string name="text_profile">Profile</string>
+    <string name="text_pinned">Pinned</string>
+    <string name="text_top_repos">Top repositories</string>
+    <string name="text_starred_repos">Starred repositories</string>
+    <string name="text_view_all"><u>View all</u></string>
+    <string name="text_followers"> Followers</string>
+    <string name="text_following"> Following</string>
+</resources>

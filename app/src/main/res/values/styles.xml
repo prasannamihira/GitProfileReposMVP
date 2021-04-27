@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="TextProfileTitle" parent="BaseTheme">
+        <item name="android:textColor">@color/textColorTitle</item>
+        <item name="android:textSize">@dimen/text_20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/source_sans_pro_regular</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="TextProfileName" parent="BaseTheme">
+        <item name="android:textColor">@color/textColorTitle</item>
+        <item name="android:textSize">@dimen/text_32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/source_sans_pro_regular</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="TextGitName" parent="BaseTheme">
+        <item name="android:textColor">@color/textColorTitle</item>
+        <item name="android:textSize">@dimen/text_16sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/source_sans_pro_regular</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="TextPinnedTitle" parent="BaseTheme">
+        <item name="android:textColor">@color/textColorTitle</item>
+        <item name="android:textSize">@dimen/text_24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/source_sans_pro_regular</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+</resources>

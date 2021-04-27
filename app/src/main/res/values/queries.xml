@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--GraphQl query-->
+    <!--query github profile data requests-->
+    <string name="query_profile_data" tools:ignore="TypographyEllipsis">
+        query {
+          viewer {
+            name
+            email
+            login
+            avatarUrl
+            followers(first: 10) {
+              totalCount
+            }
+            following(first: 10) {
+              totalCount
+            }
+            pinnedItems(first: 3) {
+               edges {
+                cursor
+              }
+            }
+            repositories(first: 10) {
+              edges {
+                repository:node {
+                  name
+                  description
+                  forkCount
+                  primaryLanguage {
+                    name
+                  }
+                }
+              }
+            }
+            starredRepositories(first: 10) {
+              edges {
+                repository:node {
+                  name
+                  description
+                  forkCount
+                  primaryLanguage {
+                    name
+                  }
+                }
+              }
+            }
+          }
+        }
+    </string>
+</resources>
