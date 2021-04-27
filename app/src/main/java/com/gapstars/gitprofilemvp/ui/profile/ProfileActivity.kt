@@ -1,6 +1,7 @@
 package com.gapstars.gitprofilemvp.ui.profile
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -26,6 +27,9 @@ class ProfileActivity : BaseActivity<ProfilePresenter>(), ProfileView {
      */
     private val reposAdapter = RepositoryAdapter(this)
 
+    private lateinit var mRunnable: Runnable
+    private lateinit var mHandler: Handler
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -33,6 +37,26 @@ class ProfileActivity : BaseActivity<ProfilePresenter>(), ProfileView {
         binding.adapter = reposAdapter
 
         presenter.onViewCreated()
+
+        // Initialize the handler instance
+        mHandler = Handler()
+
+        binding?.srlProfile?.setOnRefreshListener {
+            // Initialize a new Runnable
+            mRunnable = Runnable {
+
+                // Hide swipe to refresh icon animation
+                binding?.srlProfile?.isRefreshing = false
+
+                presenter.onViewCreated()
+            }
+
+            // Execute the task after specified time
+            mHandler.postDelayed(
+                mRunnable,
+                500
+            )
+        }
     }
 
     override fun onDestroy() {
