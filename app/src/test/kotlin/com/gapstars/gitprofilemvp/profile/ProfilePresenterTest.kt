@@ -80,7 +80,11 @@ class ProfilePresenterTest {
             repoList.add(item.repository)
         }
 
-        // verify the data is correct
-        inOrder.verify(profileView).updateProfile(gitRepoResponse.data.user)
+        // verify the profile data is correct
+        inOrder.verify(profileView).updateProfileData(gitRepoResponse.data.user)
+
+        // verify the repository data is correct
+        inOrder.verify(profileView)
+            .updatePinnedRepositories(gitRepoResponse.data.user.pinnedItems?.nodes as List<Repository>)
     }
 }
