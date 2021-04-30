@@ -4,7 +4,7 @@
     <!--query github profile data requests-->
     <string name="query_profile_data" tools:ignore="TypographyEllipsis">
         query {
-          viewer {
+          user(login: param01) {
             name
             email
             login
@@ -15,9 +15,16 @@
             following(first: 10) {
               totalCount
             }
-            pinnedItems(first: 3) {
-               edges {
-                cursor
+            pinnedItems(first: 3, types: REPOSITORY) {
+              nodes {
+                ... on Repository {
+                  name
+                  description
+                  forkCount
+                  primaryLanguage {
+                    name
+                  }
+                }
               }
             }
             repositories(first: 10) {

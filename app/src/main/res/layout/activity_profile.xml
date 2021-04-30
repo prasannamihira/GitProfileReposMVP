@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
         <variable
-            name="adapter"
-            type="com.gapstars.gitprofilemvp.ui.profile.RepositoryAdapter" />
+            name="user"
+            type="com.gapstars.gitprofilemvp.model.data.response.User" />
+
+        <variable
+            name="adapterPinned"
+            type="com.gapstars.gitprofilemvp.ui.profile.RepositoryPinnedAdapter" />
 
         <variable
             name="progressVisibility"
@@ -55,7 +60,7 @@
                     android:elevation="5dp"
                     android:focusable="true"
                     android:scaleType="centerCrop"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@{user.avatarUrl}"
                     app:civ_border_color="#FFFFFFFF"
                     app:civ_border_width="3dp"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -67,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/padding_8dp"
                     android:layout_marginBottom="@dimen/padding_16dp"
-                    android:text="Name"
+                    android:text="@{user.name}"
                     android:theme="@style/TextProfileName"
                     app:layout_constraintLeft_toRightOf="@id/iv_profile"
                     app:layout_constraintTop_toTopOf="@id/iv_profile" />
@@ -78,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/padding_8dp"
                     android:layout_marginBottom="@dimen/padding_16dp"
-                    android:text="Git Name"
+                    android:text="@{user.login}"
                     android:theme="@style/TextGitName"
                     app:layout_constraintBottom_toBottomOf="@id/iv_profile"
                     app:layout_constraintLeft_toRightOf="@id/iv_profile"
@@ -89,7 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_24dp"
-                    android:text="mihira@gmail.com"
+                    android:text="@{user.email}"
                     android:theme="@style/TextGitName"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/iv_profile" />
@@ -98,10 +103,21 @@
                     android:id="@+id/tv_followers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_24dp"
-                    android:text="24 Followers"
+                    android:layout_marginTop="@dimen/padding_16dp"
+                    android:text="@{user.followers.totalCount.toString()}"
                     android:theme="@style/TextGitName"
                     app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_owner_email" />
+
+                <TextView
+                    android:id="@+id/tv_followers_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_16dp"
+                    android:layout_marginTop="@dimen/padding_16dp"
+                    android:text="@string/text_followers"
+                    android:theme="@style/TextGitName"
+                    app:layout_constraintLeft_toRightOf="@id/tv_followers"
                     app:layout_constraintTop_toBottomOf="@id/tv_owner_email" />
 
                 <TextView
@@ -109,10 +125,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/padding_16dp"
-                    android:layout_marginTop="@dimen/padding_24dp"
-                    android:text="37 Following"
+                    android:layout_marginTop="@dimen/padding_16dp"
+                    android:text="@{user.following.totalCount.toString()}"
                     android:theme="@style/TextGitName"
-                    app:layout_constraintLeft_toRightOf="@id/tv_followers"
+                    app:layout_constraintLeft_toRightOf="@id/tv_followers_text"
+                    app:layout_constraintTop_toBottomOf="@id/tv_owner_email" />
+
+                <TextView
+                    android:id="@+id/tv_following_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_16dp"
+                    android:layout_marginTop="@dimen/padding_16dp"
+                    android:text="@string/text_following"
+                    android:theme="@style/TextGitName"
+                    app:layout_constraintLeft_toRightOf="@id/tv_following"
                     app:layout_constraintTop_toBottomOf="@id/tv_owner_email" />
 
                 <TextView
@@ -139,10 +166,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_16dp"
+                    app:adapter="@{adapterPinned}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_Pinned"
-                    app:adapter="@{adapter}"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_Pinned" />
 
                 <TextView
                     android:id="@+id/tv_top_repos"
@@ -168,11 +195,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_16dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_top_repos"
-                    app:adapter="@{adapter}"
+                    android:orientation="horizontal"
+                    app:adapter="@{adapterPinned}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:orientation="horizontal" />
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_top_repos" />
 
                 <TextView
                     android:id="@+id/tv_starred_repos"
@@ -198,11 +225,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_16dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_starred_repos"
-                    app:adapter="@{adapter}"
+                    android:orientation="horizontal"
+                    app:adapter="@{adapterPinned}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:orientation="horizontal"/>
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_starred_repos" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

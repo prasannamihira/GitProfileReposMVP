@@ -24,7 +24,7 @@ android {
         buildConfigField "String", "BASE_URL", '"https://api.github.com/"'
 
         // github graphql api access token
-        buildConfigField "String", "ACCESS_TOKEN", '"Bearer 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"'
+        buildConfigField "String", "ACCESS_TOKEN", '"Bearer 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"'
     }
 
     buildTypes {
@@ -77,7 +77,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.preference:preference-ktx:1.1.1'
 
-// RecyclerView
+    // RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.2.0'
 
     //Rx

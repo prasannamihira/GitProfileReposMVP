@@ -11,7 +11,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_5dp">
+        android:layout_marginTop="@dimen/padding_5dp"
+        android:layout_marginBottom="@dimen/padding_5dp"
+        app:cardCornerRadius="@dimen/padding_8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -25,13 +27,12 @@
                 android:layout_centerHorizontal="true"
                 android:clickable="true"
                 android:elevation="@dimen/padding_5dp"
+                android:focusable="true"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/ic_launcher"
                 app:civ_border_color="@color/white"
                 app:civ_border_width="@dimen/padding_3dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:focusable="true" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_git_name_item"
@@ -67,6 +68,8 @@
                 android:id="@+id/iv_star"
                 android:layout_width="@dimen/padding_12dp"
                 android:layout_height="@dimen/padding_12dp"
+                android:layout_marginTop="@dimen/padding_16dp"
+                android:layout_marginBottom="@dimen/padding_16dp"
                 android:src="@mipmap/ic_star"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"

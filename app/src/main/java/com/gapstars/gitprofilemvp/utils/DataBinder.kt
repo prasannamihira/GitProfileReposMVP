@@ -4,18 +4,17 @@
 package com.gapstars.gitprofilemvp.utils
 
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import com.gapstars.gitprofilemvp.ui.profile.RepositoryAdapter
+import com.gapstars.gitprofilemvp.ui.profile.RepositoryPinnedAdapter
 
 /**
  * Sets an adapter to a RecyclerView (to be used in view with one RecyclerView)
  * @param view the RecyclerView on which to set the adapter
- * @param adapter the adapter to set to the RecyclerView
+ * @param adapterPinned the adapter to set to the RecyclerView
  */
-@BindingAdapter("adapter")
-fun setAdapter(view: RecyclerView, adapter: RepositoryAdapter) {
-    view.adapter = adapter
+@BindingAdapter("adapterPinned")
+fun setAdapter(view: RecyclerView, adapterPinned: RepositoryPinnedAdapter) {
+    view.adapter = adapterPinned
 }
 
 /**

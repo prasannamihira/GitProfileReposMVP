@@ -76,11 +76,11 @@ class ProfilePresenterTest {
 
         // list of git repositories
         var repoList = ArrayList<Repository?>()
-        for (item in gitRepoResponse.data.viewer.repositories?.edges!!) {
+        for (item in gitRepoResponse.data.user.repositories?.edges!!) {
             repoList.add(item.repository)
         }
 
         // verify the data is correct
-        inOrder.verify(profileView).updateProfile(repoList as List<Repository>)
+        inOrder.verify(profileView).updateProfile(gitRepoResponse.data.user)
     }
 }

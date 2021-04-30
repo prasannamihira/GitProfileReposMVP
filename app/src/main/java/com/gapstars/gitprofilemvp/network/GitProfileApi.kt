@@ -2,7 +2,6 @@ package com.gapstars.gitprofilemvp.network
 
 import com.gapstars.githubprofilerepository.data.remote.data.request.QueryRequest
 import com.gapstars.gitprofilemvp.model.data.response.GitProfileDataResponse
-import com.gapstars.gitprofilemvp.model.RepositoryModel
 import com.gapstars.gitprofilemvp.utils.Config
 import io.reactivex.Flowable
 import io.reactivex.Observable
@@ -13,6 +12,7 @@ import retrofit2.http.*
  * The interface which provides methods to get result of webservices
  */
 interface GitProfileApi {
+
 
     /**
      * query github profile data
