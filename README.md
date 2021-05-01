@@ -1,9 +1,11 @@
 # GitHub Profile Repository using GraphQL API
 
-Project need to use a valid github token to run the app successfully. It is defined in the app level build.gradle file.
+Project need to use a valid github user token to run the app successfully. It is defined in the app level build.gradle file.
 (buildConfigField "String", "ACCESS_TOKEN", '"Bearer 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"')
-The provided token expire when create a commit to github. So please replace it with the below token when you try to run the app successfully.
-Use this token: "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"
+The provided token expire when create a commit to github. So please replace it with a valid token.
+
+### To generate a token
+- Go to your github profile -> Settings -> Personal access tokens -> Generate new token
 
 ## Below requirements are implemented
 - Language: Kotlin.
