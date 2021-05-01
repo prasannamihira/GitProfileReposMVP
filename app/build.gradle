@@ -24,7 +24,7 @@ android {
         buildConfigField "String", "BASE_URL", '"https://api.github.com/"'
 
         // github graphql api access token
-        buildConfigField "String", "ACCESS_TOKEN", '"Bearer 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"'
+        buildConfigField "String", "ACCESS_TOKEN", '"Bearer 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"'
     }
 
     buildTypes {
