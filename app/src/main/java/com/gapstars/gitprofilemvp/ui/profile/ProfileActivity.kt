@@ -26,6 +26,8 @@ class ProfileActivity : BaseActivity<ProfilePresenter>(), ProfileView {
      * The adapter for the list of repositories
      */
     private val reposPinnedAdapter = RepositoryPinnedAdapter(this)
+    private val reposAdapter = RepositoryAdapter(this)
+    private val reposStarredAdapter = RepositoryStarredAdapter(this)
 
     private lateinit var mRunnable: Runnable
     private lateinit var mHandler: Handler
@@ -35,18 +37,20 @@ class ProfileActivity : BaseActivity<ProfilePresenter>(), ProfileView {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile)
         binding.adapterPinned = reposPinnedAdapter
+        binding.adapter = reposAdapter
+        binding.adapterStarred = reposStarredAdapter
 
         presenter.onViewCreated()
 
         // Initialize the handler instance
         mHandler = Handler()
 
-        binding?.srlProfile?.setOnRefreshListener {
+        binding.srlProfile.setOnRefreshListener {
             // Initialize a new Runnable
             mRunnable = Runnable {
 
                 // Hide swipe to refresh icon animation
-                binding?.srlProfile?.isRefreshing = false
+                binding.srlProfile.isRefreshing = false
 
                 presenter.onViewCreated()
             }
@@ -86,10 +90,26 @@ class ProfileActivity : BaseActivity<ProfilePresenter>(), ProfileView {
 
     /**
      * Updates the pinned repository list by the specified token
-     * @param repositories the list of repositories that will replace existing ones
+     * @param repositories the list of pinned repositories that will replace existing ones
      */
     override fun updatePinnedRepositories(repositories: List<Repository>) {
         reposPinnedAdapter.updatePinnedRepositories(repositories)
+    }
+
+    /**
+     * Updates the repository list by the specified token
+     * @param repositories the list of repositories that will replace existing ones
+     */
+    override fun updateRepositories(repositories: List<Repository>) {
+        reposAdapter.updateRepositories(repositories)
+    }
+
+    /**
+     * Updates the starred repository list by the specified token
+     * @param repositories the list of starred repositories that will replace existing ones
+     */
+    override fun updateStarredRepositories(repositories: List<Repository>) {
+        reposStarredAdapter.updateStarredRepositories(repositories)
     }
 
     /**

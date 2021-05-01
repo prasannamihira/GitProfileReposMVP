@@ -16,8 +16,8 @@ import com.gapstars.gitprofilemvp.model.data.response.User
  * Adapter for the list of the repositories
  * @property context Context in which the application is running
  */
-class RepositoryPinnedAdapter(private val context: Context) :
-    RecyclerView.Adapter<RepositoryPinnedAdapter.RepositoryViewHolder>() {
+class RepositoryStarredAdapter(private val context: Context) :
+    RecyclerView.Adapter<RepositoryStarredAdapter.RepositoryViewHolder>() {
     /**
      * The list of repositories of the adapter
      */
@@ -42,7 +42,7 @@ class RepositoryPinnedAdapter(private val context: Context) :
      * Updates the list of repositories of the adapter
      * @param repositories the new list of repositories of the adapter
      */
-    fun updatePinnedRepositories(repositories: List<Repository>) {
+    fun updateStarredRepositories(repositories: List<Repository>) {
         this.repositories = repositories
 
         // notify adapter to update the latest data

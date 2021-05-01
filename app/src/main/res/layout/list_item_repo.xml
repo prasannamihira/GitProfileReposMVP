@@ -11,8 +11,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_5dp"
-        android:layout_marginBottom="@dimen/padding_5dp"
+        android:layout_margin="@dimen/padding_5dp"
         app:cardCornerRadius="@dimen/padding_8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,6 +24,7 @@
                 android:layout_width="@dimen/padding_32dp"
                 android:layout_height="@dimen/padding_32dp"
                 android:layout_centerHorizontal="true"
+                android:src="@{repo.avatarUrl}"
                 android:clickable="true"
                 android:elevation="@dimen/padding_5dp"
                 android:focusable="true"

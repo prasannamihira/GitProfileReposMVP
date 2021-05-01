@@ -72,17 +72,29 @@ class ProfilePresenter(profileView: ProfileView) : BasePresenter<ProfileView>(pr
                         App.user = user
 
                         // pinned repository items
-                        for (item in it.body()?.data?.user?.pinnedItems?.nodes!!)
+                        for (item in it.body()?.data?.user?.pinnedItems?.nodes!!) {
+                            item.avatarUrl = user.avatarUrl
                             repoPinnedList.add(item)
+                        }
                         // repository items
-                        for (item in it.body()?.data?.user?.repositories?.edges!!)
+                        for (item in it.body()?.data?.user?.repositories?.edges!!) {
+                            item.repository?.avatarUrl = user.avatarUrl
                             repoList.add(item.repository)
+                        }
                         // starred repository items
-                        for (item in it.body()?.data?.user?.starredRepositories?.edges!!)
+                        for (item in it.body()?.data?.user?.starredRepositories?.edges!!) {
+                            item.repository?.avatarUrl = user.avatarUrl
                             repoStarredList.add(item.repository)
+                        }
 
                         // update the pinned repository list view
                         view.updatePinnedRepositories(repoPinnedList as List<Repository>)
+
+                        // update the repository list view
+                        view.updateRepositories(repoList as List<Repository>)
+
+                        // update the starred repository list view
+                        view.updateStarredRepositories(repoStarredList as List<Repository>)
 
                         // update the user profile data
                         view.updateProfileData(user)

@@ -23,6 +23,18 @@ interface ProfileView : BaseView {
     fun updatePinnedRepositories(repositories: List<Repository>)
 
     /**
+     * Updates the profile repositories by the specified token
+     * @param repositories the list of repositories that will replace existing ones
+     */
+    fun updateRepositories(repositories: List<Repository>)
+
+    /**
+     * Updates the profile starred repositories by the specified token
+     * @param repositories the list of starred repositories that will replace existing ones
+     */
+    fun updateStarredRepositories(repositories: List<Repository>)
+
+    /**
      * Displays an error in the view
      * @param error the error to display in the view
      */

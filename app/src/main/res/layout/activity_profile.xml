@@ -12,6 +12,14 @@
             type="com.gapstars.gitprofilemvp.ui.profile.RepositoryPinnedAdapter" />
 
         <variable
+            name="adapter"
+            type="com.gapstars.gitprofilemvp.ui.profile.RepositoryAdapter" />
+
+        <variable
+            name="adapterStarred"
+            type="com.gapstars.gitprofilemvp.ui.profile.RepositoryStarredAdapter" />
+
+        <variable
             name="progressVisibility"
             type="Integer" />
     </data>
@@ -165,6 +173,8 @@
                     android:id="@+id/rv_pinned_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_m5dp"
+                    android:layout_marginRight="@dimen/padding_m5dp"
                     android:layout_marginTop="@dimen/padding_16dp"
                     app:adapter="@{adapterPinned}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -194,9 +204,11 @@
                     android:id="@+id/rv_top_repos_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_m5dp"
+                    android:layout_marginRight="@dimen/padding_m5dp"
                     android:layout_marginTop="@dimen/padding_16dp"
                     android:orientation="horizontal"
-                    app:adapter="@{adapterPinned}"
+                    app:adapter="@{adapter}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_top_repos" />
@@ -224,9 +236,11 @@
                     android:id="@+id/rv_starred_repos_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_m5dp"
+                    android:layout_marginRight="@dimen/padding_m5dp"
                     android:layout_marginTop="@dimen/padding_16dp"
                     android:orientation="horizontal"
-                    app:adapter="@{adapterPinned}"
+                    app:adapter="@{adapterStarred}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_starred_repos" />

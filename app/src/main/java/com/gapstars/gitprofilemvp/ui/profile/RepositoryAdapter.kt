@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.gapstars.gitprofilemvp.R
 import com.gapstars.gitprofilemvp.databinding.ListItemRepoBinding
 import com.gapstars.gitprofilemvp.model.data.response.Repository
+import com.gapstars.gitprofilemvp.model.data.response.User
 
 /**
  * Adapter for the list of the repositories
@@ -32,15 +35,17 @@ class RepositoryAdapter(private val context: Context) :
     }
 
     override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
-        holder?.bind(repositories[position])
+        holder.bind(repositories[position])
     }
 
     /**
      * Updates the list of repositories of the adapter
      * @param repositories the new list of repositories of the adapter
      */
-    fun updatePosts(repositories: List<Repository>) {
+    fun updateRepositories(repositories: List<Repository>) {
         this.repositories = repositories
+
+        // notify adapter to update the latest data
         notifyDataSetChanged()
     }
 
@@ -55,6 +60,14 @@ class RepositoryAdapter(private val context: Context) :
          */
         fun bind(repository: Repository) {
             binding.repo = repository
+
+            binding.ivProfileItem.post {
+                Glide.with(binding.ivProfileItem.context)
+                    .load(repository.avatarUrl)
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(binding.ivProfileItem)
+            }
+
             binding.executePendingBindings()
         }
     }

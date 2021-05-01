@@ -116,7 +116,8 @@ data class Repository(
     val name: String?,
     val description: String?,
     val forkCount: Int?,
-    val primaryLanguage: PrimaryLanguage?
+    val primaryLanguage: PrimaryLanguage?,
+    var avatarUrl: String?
 )
 
 /**
